@@ -68,4 +68,26 @@ You can author your README using Visual Studio Code. Here are some useful editor
 * [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
+## 使い方の説明
+
+これを元にしてF5で拡張機能開発ホストを開きます。
+そして任意のフォルダを選択すると、エラーをRedHatで解析し、それを日本語で表示します。
+エラーの内容を増やす時は
+function translate(message: string): string
+内の
+
+ if (message.includes('エラー文の核となる部分')) {
+      return `
+
+  ～エラー内容を記述～
+
+  ${message}
+`;
+  
+  という形で追加できます。
+  今後の機能開発として
+  ・現在はフォルダ内全てのエラーを取得し通知するので、大量のエラーがある場合、通知が壊れる可能性があり、今後は開いているファイルのみのエラーを表示するように改修するつもりです。
+  ・またエラーは随時追加する必要があります。
+  ・期限未定ですが、MaketPlaceで公開し、拡張機能として利用できるようにしたいです。
+
 **Enjoy!**
