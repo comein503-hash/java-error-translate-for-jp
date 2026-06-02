@@ -90,5 +90,8 @@ function translate(message: string): string
   ・またエラーは随時追加する必要があります。
   ・期限未定ですが、MaketPlaceで公開し、拡張機能として利用できるようにしたいです。
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5f0715465bda9acf9a6cb9139f5eba5c18ec6c2c
 **Enjoy!**
