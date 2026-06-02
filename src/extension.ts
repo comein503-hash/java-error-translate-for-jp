@@ -40,20 +40,30 @@ export function activate(context: vscode.ExtensionContext) {
         'java-error-japanese.helloWorld',
         () => {
 
+            const editor = vscode.window.activeTextEditor;
+
+            if (!editor) {
+
+                vscode.window.showInformationMessage(
+                    'ファイルが開かれていません'
+                );
+
+                return;
+            }
+
+            const uri = editor.document.uri;
+
             const diagnostics =
-                vscode.languages.getDiagnostics();
+                vscode.languages.getDiagnostics(uri);
 
             let result = '';
 
-            for (const [uri, errors] of diagnostics) {
+            result += uri.fsPath + '\n\n';
 
-                result += uri.fsPath + '\n';
+            for (const error of diagnostics) {
 
-                for (const error of errors) {
-
-                    result +=
-                        translate(error.message) + '\n';
-                }
+                result +=
+                    translate(error.message) + '\n\n';
             }
 
             vscode.window.showInformationMessage(
